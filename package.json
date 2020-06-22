@@ -1,0 +1,22 @@
+{
+  "name": "link",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "node spec/support/jasmine-runner.js",
+    "update": "claudia update --version test --profile claudia"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "claudia-api-builder": "^4.1.2",
+    "dynamodb": "^1.2.1",
+    "joi": "^14.3.1"
+  },
+  "devDependencies": {
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^5.0.2"
+  }
+}
