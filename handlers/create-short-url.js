@@ -26,7 +26,7 @@ const createShortUrl = async request => {
 
       if (shorturl) {
         const { Id } = shorturl.attrs;
-        const sUrl = new URL(`/s/${Id}`, BASE_URL)
+        const sUrl = new URL(`/${Id}`, BASE_URL)
         resolve(sUrl.toString());
       } else {
         reject('Could not create shorturl');

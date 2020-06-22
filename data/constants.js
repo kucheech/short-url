@@ -1,7 +1,7 @@
 'use strict';
 
 const JASMINE_TIMEOUT = 100000;
-const BASE_URL = 'https://n17j9nvgeg.execute-api.ap-southeast-1.amazonaws.com/test';
+const BASE_URL = 'https://d21prpgfce4oa9.cloudfront.net';
 
 module.exports = {
     JASMINE_TIMEOUT,
