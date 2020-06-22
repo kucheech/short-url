@@ -9,16 +9,16 @@ describe('Create shorten url', () => {
   });
 
   const missing_or_invalid_url = MISSING_OR_INVALID_VALUE('url');
-  it(`should reject with a ${missing_or_invalid_url} error for missing type`, async () => {
-    await expectAsync(underTest({ queryString: {} })).toBeRejectedWith(missing_or_invalid_url);
-    await expectAsync(underTest({ queryString: { type: 123 } })).toBeRejectedWith(missing_or_invalid_url);
-    await expectAsync(underTest({ queryString: { type: true } })).toBeRejectedWith(missing_or_invalid_url);
-    await expectAsync(underTest({ queryString: { type: [] } })).toBeRejectedWith(missing_or_invalid_url);
-    await expectAsync(underTest({ queryString: { type: '' } })).toBeRejectedWith(missing_or_invalid_url);
+  it(`should reject with a ${missing_or_invalid_url} error for null request`, async () => {
+    await expectAsync(underTest({ body: { url: 123 } })).toBeRejectedWith(missing_or_invalid_url);
+    await expectAsync(underTest({ body: { url: true } })).toBeRejectedWith(missing_or_invalid_url);
+    await expectAsync(underTest({ body: { url: {} } })).toBeRejectedWith(missing_or_invalid_url);
+    await expectAsync(underTest({ body: { url: [] } })).toBeRejectedWith(missing_or_invalid_url);
+    await expectAsync(underTest({ body: { url: '' } })).toBeRejectedWith(missing_or_invalid_url);
   });
 
   it('should resolve for valid request', async () => {
-    const url = 'https://www.google.com';
-    await expectAsync(underTest({ queryString: { url } })).toBeResolved();
+    const url = 'https://www.yahoo.com';
+    await expectAsync(underTest({ body: { url } })).toBeResolved();
   });
 });
