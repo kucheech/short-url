@@ -1,12 +1,12 @@
 'use strict';
 
 const moment = require('moment');
-const shortid = require('shortid');
+const { nanoid } = require('nanoid');
 const ShortUrl = require('../models/ShortUrl');
 const { validateRequest } = require('./util');
-const { BASE_URL, EXPIRY_HOURS } = require('../data/constants');
+const { BASE_URL, EXPIRY_HOURS, NUM_CHARS } = require('../data/constants');
 
-const generateShortUrl = () => shortid.generate();
+const generateId = () => nanoid(NUM_CHARS);
 
 const createShortUrl = async request => {
   const { url: from, error } = await validateRequest(request, undefined, [{ name: 'url', type: 'string' }]);
@@ -16,7 +16,7 @@ const createShortUrl = async request => {
 
   const new_shorturl = {
     from,
-    Id: generateShortUrl(),
+    Id: generateId(),
     expiredAt: moment().add(EXPIRY_HOURS, 'hour').unix()
   };
 

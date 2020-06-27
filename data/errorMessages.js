@@ -8,6 +8,7 @@ const INTERNAL_APPLICATION_ERROR = 'Internal application error';
 const NO_RESULT = 'No results found';
 const NOT_FOUND = p => `${p} not found`;
 const QUERY_LIMIT_EXCEEDED = 'Query capacity exceeded. Refine the parameters for a smaller query scope';
+const COULD_NOT_FIND_SLUG = 'Could not find long url. Slug may be invalid or expired.';
 
 module.exports = {
   MISSING_PARAMETER,
@@ -17,5 +18,6 @@ module.exports = {
   INTERNAL_APPLICATION_ERROR,
   NO_RESULT,
   NOT_FOUND,
-  QUERY_LIMIT_EXCEEDED
+  QUERY_LIMIT_EXCEEDED,
+  COULD_NOT_FIND_SLUG
 }

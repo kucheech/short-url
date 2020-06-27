@@ -2,7 +2,7 @@
 
 const underTest = require('../api');
 
-fdescribe('API', () => {
+describe('API', () => {
   [
     {
       path: '',
