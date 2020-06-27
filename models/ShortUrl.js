@@ -13,8 +13,9 @@ const ShortUrl = dynamo.define(tableName, {
   timestamps: true,
 
   schema: {
-    Id: Joi.string(),
-    from: Joi.string(),
+    Id: Joi.string(), //slug
+    from: Joi.string(), //long url
+    expiredAt: Joi.number()
   },
 
   tableName

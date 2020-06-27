@@ -2,7 +2,7 @@
 
 const underTest = require('../api');
 
-describe('API', () => {
+fdescribe('API', () => {
   [
     {
       path: '',
@@ -11,6 +11,10 @@ describe('API', () => {
     {
       path: 'shorten',
       requestTypes: ['POST']
+    },
+    {
+      path: '{id}',
+      requestTypes: ['GET']
     }
   ].forEach(route => {
     it(`should setup /${route.path} route`, () => {

@@ -1,9 +1,10 @@
 'use strict';
 
+const moment = require('moment');
 const shortid = require('shortid');
 const ShortUrl = require('../models/ShortUrl');
 const { validateRequest } = require('./util');
-const { BASE_URL } = require('../data/constants');
+const { BASE_URL, EXPIRY_HOURS } = require('../data/constants');
 
 const generateShortUrl = () => shortid.generate();
 
@@ -15,7 +16,8 @@ const createShortUrl = async request => {
 
   const new_shorturl = {
     from,
-    Id: generateShortUrl()
+    Id: generateShortUrl(),
+    expiredAt: moment().add(EXPIRY_HOURS, 'hour').unix()
   };
 
   return new Promise((resolve, reject) => {
@@ -26,8 +28,8 @@ const createShortUrl = async request => {
 
       if (shorturl) {
         const { Id } = shorturl.attrs;
-        const sUrl = new URL(`/${Id}`, BASE_URL)
-        resolve(sUrl.toString());
+        const shortUrl = new URL(`/${Id}`, BASE_URL)
+        resolve(shortUrl.toString());
       } else {
         reject('Could not create shorturl');
       }
